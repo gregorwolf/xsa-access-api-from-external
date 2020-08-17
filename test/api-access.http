@@ -1,0 +1,19 @@
+### Get Access Token
+# @name requestAccessToken
+POST {{$dotenv url}}/oauth/token
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json;charset=utf8
+
+grant_type=password
+&client_id={{$dotenv clientid}}
+&client_secret={{$dotenv clientsecret}}
+&username={{$dotenv username}}
+&password={{$dotenv password}}
+&response_type=token
+
+### Fill Variables from Response
+@access_token = {{requestAccessToken.response.body.$.access_token}}
+
+### Read testEndpoint
+GET {{$dotenv srvurl}}/api/testEndpoint
+Authorization: bearer {{access_token}}
