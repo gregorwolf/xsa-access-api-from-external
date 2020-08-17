@@ -1,5 +1,6 @@
 {
-  "xsappname": "external-api-access",
+  "xsappname": "external-access-to-api",
+  "tenant-mode": "dedicated",
   "scopes": [{
     "name": "$XSAPPNAME.Display",
     "description": "display"
