@@ -1,9 +1,9 @@
-ID: mta_external_access_to_api
+ID: external-access-to-api
 _schema-version: '2.0'
 description: Test External Access to API
 version: 0.0.1
 modules:
-  - name: api_js
+  - name: external-access-api
     type: nodejs
     path: api_js
     provides:
@@ -11,13 +11,13 @@ modules:
         properties:
           url: '${default-url}'
     requires:
-      - name: external_api_access-uaa
+      - name: external-access-uaa
 
-  - name: web
+  - name: external-access-web
     type: html5
     path: web
     requires:
-      - name: external_api_access-uaa
+      - name: external-access-uaa
       - name: api_js_api
         group: destinations
         properties:
@@ -26,7 +26,7 @@ modules:
           forwardAuthToken: true
         
 resources:
-  - name: external_api_access-uaa
+  - name: external-access-uaa
     type: com.sap.xs.uaa
     parameters:
       config-path: ./xs-security.json
